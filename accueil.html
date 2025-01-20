@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title> Accueil</title>
+        <link rel="stylesheet" href="accueil.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <script src="./accueil.js"></script>
+    <body>
+        <h1 class="entete">
+            <div class="titre noto">
+                Cardar
+            </div>
+            <div class="noto petitre">
+                Votre site pour tout savoir sur vos cartes graphiques !
+            </div>
+        </h1>
+        <div>
+            <img src="search.svg" id="mg" />
+            <input placerholder="Rechercher" id="search" type="search" type="search"/>
+        </div>
+        <div>
+            <table id="table"></table>
+        </div>
+        <div class="logot">
+            <img src="Logocardar.png">
+        </div>
+        
+        <nav class = "menu tiletext">
+            <ul class="Navi">
+                <li class="tile clickedtile">
+                    <a>Accueil</a>
+                </li>
+                <a href="./services.html" ><li class="tile">Ajouter</li></a>
+            </ul>
+        </nav>
+                <table class="tablo ">
+            <thead>
+                <tr>
+                    <th>
+                        <div class="flex">
+                            <span class="fgrow">Nom</span>
+                            <div id="nameAsc">⬆️</div>
+                            <div id="nameDesc">⬇️</div>
+                        </div>
+                    </th>
+                    <th>GPU</th>
+                    <th>Date de sortie</th>
+                    <th>
+                        <div class="flex">
+                            <span class="fgrow">Cores</span>
+                            <div id="coresAsc">⬆️</div>
+                            <div id="coresDesc">⬇️</div>
+                        </div>
+                    </th>
+                    <th>TMUS</th>
+                    <th>ROPS</th>
+                    <th>Memory</th>
+                    <th>Memory Type</th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+
+            </tbody>
+        </table>
+    </body>
+    <script>
+    var data = [];
+    var show_data = [];
+
+    var sort = ["name", "asc"];
+
+    const fields =["Model","Code name","Launch","Cores","TMUS","ROPS","Memory Size","Memory Bus type"];
+
+    function generateTableContent() {
+        let content = "";
+        console.log(sort);
+        show_data.sort((a,b) => {
+            if(sort[0] === "name" && sort[1] === "asc") return a.Model > b.Model ? 1 : -1;
+            if(sort[0] === "name" && sort[1] === "desc") return a.Model < b.Model ? 1 : -1;
+            if(sort[0] === "cores" && sort[1] === "asc") return parseInt(a.Cores.split(" ")[0]) > parseInt(b.Cores.split(" ")[0]) ? 1 : -1;
+            if(sort[0] === "cores" && sort[1] === "desc") return parseInt(a.Cores.split(" ")[0]) < parseInt(b.Cores.split(" ")[0]) ? 1 : -1;
+            return 0;
+        }).forEach((rowData) => {
+            content += "<tr>";
+            fields.forEach((field) => {
+                content += "<td>" + rowData[field] + "</td>";            
+            })
+            content += "</tr>";
+        });
+        document.getElementById("tbody").innerHTML = content;
+    }
+
+    const requete = new ajax("https://raw.githubusercontent.com/voidful/gpu-info-api/gpu-data/gpu.json","get")
+    requete.send(function(données){
+        
+
+        const keys = Object.keys(données)
+        keys.forEach(key => {
+            if (key=="Code name") return ;
+            const CG=données[key];
+
+
+            const cc = CG["Core config"] || CG["Core Config"] ||CG["Config core"] || CG["Core config12*"];
+            const[Cores,TMUS,ROPS]=cc.split(":")
+            if (CG["Model"] =="nan") CG["Model"]=key
+
+
+            data.push({
+                GPU: key ?? "",
+                Model: CG.Model.toString() ?? "",
+                "Code name": CG["Code name"] ?? "",
+                Launch: (CG.Launch ?? "").substring(0,10),
+                Cores: Cores ?? "",
+                TMUS: TMUS ?? "",
+                ROPS: ROPS ?? "",
+                "Memory Size": CG["Memory Size"] ?? CG["Memory Size (MiB)"] ?? CG["Memory Size (GiB)"] ?? "",
+                "Memory Bus type": CG["Memory Bus type"] ??  CG["Memory Bus type"] ?? CG["Memory Bus type"] ?? ""
+            })
+        });
+
+        show_data = data;
+        generateTableContent();
+
+    })
+
+    document.getElementById("nameAsc").addEventListener("click", (event) => {
+        sort = ["name", "asc"]
+        generateTableContent();
+    });
+
+    document.getElementById("nameDesc").addEventListener("click", (event) => {
+        sort = ["name", "desc"]
+        generateTableContent();
+    });
+
+    document.getElementById("coresDesc").addEventListener("click", (event) => {
+        sort = ["cores", "desc"]
+        generateTableContent();
+    });
+
+    document.getElementById("coresAsc").addEventListener("click", (event) => {
+        sort = ["cores", "asc"]
+        generateTableContent();
+    });
+
+    document.getElementById("search").addEventListener("keyup", (event) => {
+        setTimeout(() => {
+            console.log(event.target.value);
+            let value = '';
+            value = data.filter(value => value.Model.toLowerCase().includes(event.target.value.toLowerCase())||
+                value["Code name"].toLowerCase().includes(event.target.value.toLowerCase()) ||
+                value["Cores"].toLowerCase().includes(event.target.value.toLowerCase()) ||
+                value["TMUS"].toLowerCase().includes(event.target.value.toLowerCase())||
+                value["ROPS"].toLowerCase().includes(event.target.value.toLowerCase())||
+                value["Memory Size"].toString().toLowerCase().includes(event.target.value.toLowerCase())||
+                value["Memory Bus type"].toLowerCase().includes(event.target.value.toLowerCase())
+            );
+
+            if(value.length > 0){
+                show_data = value;
+                generateTableContent()
+            }
+        }, 200);
+    })
+
+
+    </script>

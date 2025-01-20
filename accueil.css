@@ -1,0 +1,215 @@
+.navi{
+    color:aliceblue;
+    display:flex;
+    margin:5px;
+}
+.menu{
+    position: absolute;
+    transition: background-color 200ms linear;
+    width: 15%;
+
+    top: 36%;
+}
+.tile{
+    position: center;
+    background-color: rgb(32, 70, 90);
+    transition: background-color 400ms linear;
+    width: 100%;
+    color: aliceblue;
+    margin-top: 10px;
+    padding: 10px;
+    margin-left: 15%;
+}
+.tile:hover{
+    background-color: rgba(7,81,142,255);
+    box-shadow: grey 8px 2px 8px 0;
+}
+.clickedtile{
+    position: center;
+    background-color: rgb(5, 124, 189);
+    transition: background-color 200ms linear;
+    width: 100%;
+    color: aliceblue;
+    margin-top: 10px;
+    padding: 10px;
+    margin-left: 15%;
+}
+.tiletext{
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.titre{
+    position: center;
+    padding: 4%;
+    font-family: "Noto Sans", serif;
+    font-weight: bold;
+    font-size: 200%;
+}
+.petitre{
+    font-size: 60%;
+    margin: 0px;
+}
+.entete {
+    background-image: 
+        linear-gradient(to bottom, transparent, rgb(10, 18, 20) 98%), /* Dégradé semi-transparent */
+        url("bacus.jpeg"); 
+    background-size: cover; 
+    height: 500px;
+    background-repeat: no-repeat;
+    background-position: center 25%;
+    color: white;
+    text-align: center;
+    margin: 0px;
+}
+.logot{
+    position: absolute;
+    top:0px;
+    right:190px;
+    width: 50px;
+
+}
+.logot>img{
+    width: 200px;
+}
+nav ul {
+    list-style-type: none; /* Supprime les puces */
+    padding: 0; /* Supprime les marges internes */
+  }
+
+  nav li {
+    margin-right: 15px; /* Ajoute un espace entre les éléments */
+  }
+.noto {
+  font-family: "Noto Sans", serif;
+  font-optical-sizing: auto;
+  font-weight: auto;
+  font-style: normal;
+}
+body{
+    background-color: rgb(10, 18, 20);
+    height: 100vh;
+}
+.tablo{
+    color: white;
+    font-family: "Noto Sans",serif;
+    content: center;
+    margin-top:-100px;
+
+}
+.formula{
+    font-family: "Noto Sans",serif;
+
+}
+textarea {
+    resize: vertical;
+}
+button {
+    display: inline-block;
+    padding: 10px 15px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #4CAF50;
+    color: rgb(46, 94, 162);
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: #4CAF50;
+    outline: none;
+    box-shadow: 0 0 4px rgba(76, 175, 80, 0.5);
+}
+form {
+    background-color: #0a2b47;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+    margin-top: -150px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #ffffff;
+}
+table {
+    width: 68%;
+    border-collapse: collapse;
+    margin: 20px auto;
+}
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+th {
+    background-color: #0c2a38;
+}
+tr:nth-child(even) {
+    background-color: #275c8a;
+}
+#mg {
+    position: absolute;
+    top: 330px;
+    height: 40px;
+    left: 506px;
+    z-index: 100;
+    height: 20px;
+}
+#search {
+    position: absolute;
+    top: 320px;
+    height: 40px;
+    background-color: #0000005a;
+    color: white;
+    padding-left: 5dvh;
+    font-family: "Noto Sans", serif;
+    border-radius: 19px;
+    left: 30%;
+    right: 30%;
+    box-shadow: 0;
+    outline: 0;
+    border: 0;
+}
+
+.flexOnlyScreen{
+    display: flex;
+}
+@media ((max-width:700px)){
+    .displayNoneMobile{    
+    display: none;
+    }
+    .flexOnlyScreen{
+        display:block;
+    }
+    .containerFond{
+        background-color:rgb(10, 18, 20);
+    }
+    .logot{
+        right: 15px;
+    }
+}
+@media ((min-width:1200px)){
+    .tile{width: 50%;
+
+    }
+    .clickedtile{width: 50%;
+
+    }
+}
+.fgrow {
+    flex-grow: 1;
+}
+.flex {
+    display: flex;
+}
+#nameAsc, #nameDesc, #coresAsc, #coresDesc {
+    cursor: pointer; 
+}
