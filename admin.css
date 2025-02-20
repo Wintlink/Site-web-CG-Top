@@ -1,0 +1,48 @@
+.tile a {
+    color: white;
+    text-decoration: none;
+}
+
+.centerElement {
+    margin-bottom: 15px;
+}
+
+input, button {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+button:hover {
+    background-color: #4e337a;
+}
+
+input:focus {
+    outline: none;
+    border: 3px solid #4e337a;
+    box-shadow: 0 6px 8px rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
+}
+
+.logo-container {
+    position: absolute;
+    top: 230px; /* Hauteur logo admin*/
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+.admin-logo {
+    width: 115px;
+    height: 115px;
+    object-fit: cover;
+    
+}
