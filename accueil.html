@@ -21,10 +21,10 @@
         <div class="filters">
             <div>
                 <img src="search.svg" id="mg" />
-                <input placeholder="Rechercher" id="search" type="search" />
+                <input placeholder="🔍 Rechercher" id="search" type="search" />
             </div>
             <div>
-                <label for="yearFilter">Filtrer par année de lancement:</label>
+                <label for="yearFilter">📅 Filtrer par année de lancement:</label>
                 <select id="yearFilter" class="dropdown">
                     <option value="all">Toutes</option>
                     <!-- Generate options for years 2000 to 2025 -->
@@ -36,7 +36,7 @@
                 </select>
             </div>
             <div>
-                <label for="memoryFilter">Filtrer par taille de mémoire:</label>
+                <label for="memoryFilter">💾 Filtrer par taille de mémoire:</label>
                 <select id="memoryFilter" class="dropdown">
                     <option value="all">Toutes</option>
                     <option value="512">Moins de 512MB</option>
@@ -50,7 +50,7 @@
                 </select>
             </div>
             <div>
-                <label for="memoryTypeFilter">Filtrer par type de mémoire:</label>
+                <label for="memoryTypeFilter">🔧 Filtrer par type de mémoire:</label>
                 <select id="memoryTypeFilter" class="dropdown">
                     <option value="all">Toutes</option>
                     <option value="gddr">GDDR</option>
@@ -63,7 +63,7 @@
                 </select>
             </div>
             <div>
-                <label for="vendorFilter">Filtrer par fournisseur:</label>
+                <label for="vendorFilter">🏢 Filtrer par fournisseur:</label>
                 <select id="vendorFilter" class="dropdown">
                     <option value="all">Tous</option>
                     <option value="amd">AMD</option>
@@ -74,7 +74,7 @@
                 </select>
             </div>
             <div>
-                <label for="gpuGenerationFilter">Filtrer par génération de GPU:</label>
+                <label for="gpuGenerationFilter">🖥️ Filtrer par génération de GPU:</label>
                 <select id="gpuGenerationFilter" class="dropdown">
                     <option value="all">Toutes</option>
                     <option value="RTX 50">RTX 50</option>
@@ -90,7 +90,7 @@
                 </select>
             </div>
             <div>
-                <button id="resetFilters" class="styled-button">Réinitialiser les filtres</button>
+                <button id="resetFilters" class="styled-button">🔄 Réinitialiser les filtres</button>
             </div>
         </div>
         <div class="table-container">
@@ -135,7 +135,7 @@
                 <a>Accueil</a>
             </li>
         </ul>
-        <a href="./services.html"><li class="tile">Ajouter</li></a>
+        <a href="./ajout.html"><li class="tile">Ajouter</li></a>
         
     </nav>
 
@@ -167,8 +167,8 @@
                 const searchMatch = filters.search === "" || item.Model.toLowerCase().includes(filters.search.toLowerCase()) ||
                     item["Code name"].toLowerCase().includes(filters.search.toLowerCase()) ||
                     item.Cores.toLowerCase().includes(filters.search.toLowerCase()) ||
-                    item.TMUS.toLowerCase().includes(filters.search.toLowerCase()) ||
-                    item.ROPS.toLowerCase().includes(filters.search.to.lowerCase()) ||
+                    item.TMUS.toLowerCase().includes(filters.search.to.lowerCase()) ||
+                    item.ROPS.to.lowerCase().includes(filters.search.to.lowerCase()) ||
                     item["Memory Size"].toString().to.lowerCase().includes(filters.search.to.lowerCase()) ||
                     item["Memory Bus type"].to.lowerCase().includes(filters.search.to.lowerCase());
                 return yearMatch && memoryMatch && memoryTypeMatch && vendorMatch && generationMatch && searchMatch;

@@ -1,3 +1,5 @@
+
+
 class ajax {
     constructor(url, method, options) {
         this.url = url;
