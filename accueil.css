@@ -10,29 +10,40 @@
 
     top: 36%;
 }
-.tile{
+.tile, .tile a {
     position: center;
     background-color: rgb(32, 70, 90);
-    transition: background-color 400ms linear;
+    transition: background-color 400ms linear, transform 0.3s ease;
     width: 100%;
     color: aliceblue;
     margin-top: 10px;
     padding: 10px;
     margin-left: 15%;
+    text-decoration: none;
+    display: block;
+    text-align: center;
 }
-.tile:hover{
+.tile:hover, .tile a:hover {
     background-color: rgba(7,81,142,255);
     box-shadow: grey 8px 2px 8px 0;
+    transform: scale(1.05);
 }
-.clickedtile{
+.clickedtile {
     position: center;
-    background-color: rgb(5, 124, 189);
-    transition: background-color 200ms linear;
+    background-color: rgba(5, 124, 189, 0.8);
+    transition: background-color 200ms linear, transform 0.3s ease;
     width: 100%;
     color: aliceblue;
     margin-top: 10px;
     padding: 10px;
     margin-left: 15%;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+}
+.clickedtile:hover, .clickedtile a:hover {
+    background-color: rgba(5, 124, 189, 0.6);
+    transform: scale(1.05);
 }
 .tiletext{
     text-align: center;
@@ -126,7 +137,7 @@ button.styled-button {
     margin: 10px 0;
     border: none;
     border-radius: 4px;
-    background-color: #4CAF50;
+    background-color: rgb(32, 70, 90);
     color: white;
     font-size: 16px;
     cursor: pointer;
@@ -134,12 +145,12 @@ button.styled-button {
 }
 
 button.styled-button:hover {
-    background-color: #45a049;
+    background-color: rgba(7,81,142,255);
     transform: scale(1.05);
 }
 
 button.styled-button:active {
-    background-color: #3e8e41;
+    background-color: rgba(5, 124, 189, 0.8);
     transform: scale(1);
 }
 
@@ -280,7 +291,6 @@ select:focus {
 
 .filters {
     width: 20%;
-    background-color: #0a2a4700;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
