@@ -14,5 +14,21 @@
         </div>
     </h1>
     <div id="details" class="details-container"></div>
+    <div>
+        <button id="techpowerupButton">Rechercher sur TechPowerUp</button>
+        <button id="backButton">Retour</button>
+    </div>
 </body>
+<script>
+document.getElementById("techpowerupButton").addEventListener("click", function() {
+    const model = new URLSearchParams(window.location.search).get('model');
+    if (model) {
+        window.open(`https://www.techpowerup.com/gpu-specs/?ajaxsrch=${encodeURIComponent(model)}`, '_blank');
+    }
+});
+
+document.getElementById("backButton").addEventListener("click", function() {
+    window.history.back();
+});
+</script>
 </html>
