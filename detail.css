@@ -1,0 +1,77 @@
+body {
+    background-color: rgb(10, 18, 20);
+    color: white;
+    font-family: "Noto Sans", serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.entete {
+    background-image: 
+        linear-gradient(to bottom, transparent, rgb(10, 18, 20) 98%), 
+        url("bacus.jpeg"); 
+    background-size: cover; 
+    height: 300px;
+    background-repeat: no-repeat;
+    background-position: center 25%;
+    color: white;
+    text-align: center;
+    margin: 0;
+    width: 100%;
+}
+
+.titre {
+    padding: 2%;
+    font-family: "Noto Sans", serif;
+    font-weight: bold;
+    font-size: 200%;
+}
+
+.details-container {
+    background-color: #0a2b47;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px;
+    width: 80%;
+    max-width: 800px;
+    font-family: "Noto Sans", serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.details-container h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    font-family: "Noto Sans", serif;
+    color: #4CAF50;
+}
+
+.details-container p {
+    font-size: 18px;
+    margin: 10px 0;
+    font-family: "Noto Sans", serif;
+    width: 100%;
+    text-align: left;
+}
+
+.details-container strong {
+    color: #4CAF50;
+    font-family: "Noto Sans", serif;
+}
+
+.details-container .detail-item {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.details-container .detail-item:last-child {
+    border-bottom: none;
+}
