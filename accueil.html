@@ -1,289 +1,300 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="utf-8">
-        <title> Accueil</title>
-        <link rel="stylesheet" href="accueil.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900&display=swap" rel="stylesheet">
-        <script src="./accueil.js"></script>
-    <body>
-        <h1 class="entete">
-            <div class="titre noto">
-                Cardar
+<head>
+    <meta charset="utf-8">
+    <title>Accueil</title>
+    <link rel="stylesheet" href="accueil.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1 class="entete">
+        <div class="titre noto">
+            Cardar
+        </div>
+        <div class="noto petitre">
+            Votre site pour tout savoir sur vos cartes graphiques !
+        </div>
+    </h1>
+    <div class="main-content">
+        <div class="filters">
+            <div>
+                <img src="search.svg" id="mg" />
+                <input placeholder="Rechercher" id="search" type="search" />
             </div>
-            <div class="noto petitre">
-                Votre site pour tout savoir sur vos cartes graphiques !
+            <div>
+                <label for="yearFilter">Filtrer par année de lancement:</label>
+                <select id="yearFilter" class="dropdown">
+                    <option value="all">Toutes</option>
+                    <!-- Generate options for years 2000 to 2025 -->
+                    <script>
+                        for (let year = 2000; year <= 2025; year++) {
+                            document.write(`<option value="${year}">${year}</option>`);
+                        }
+                    </script>
+                </select>
             </div>
-        </h1>
-        <div>
-            <img src="search.svg" id="mg" />
-            <input placerholder="Rechercher" id="search" type="search" type="search"/>
-        </div>
-        <div>
-            <label for="yearFilter">Filtrer par année de lancement:</label>
-            <select id="yearFilter" class="dropdown">
-                <option value="all">Toutes</option>
-                <!-- Generate options for years 2000 to 2025 -->
-                <script>
-                    for (let year = 2000; year <= 2025; year++) {
-                        document.write(`<option value="${year}">${year}</option>`);
-                    }
-                </script>
-            </select>
-        </div>
-        <div>
-            <label for="memoryFilter">Filtrer par taille de mémoire:</label>
-            <select id="memoryFilter" class="dropdown">
-                <option value="all">Toutes</option>
-                <option value="512">Moins de 512MB</option>
-                <option value="1024">512MB - 1GB</option>
-                <option value="2048">1GB - 2GB</option>
-                <option value="4096">2GB - 4GB</option>
-                <option value="8192">4GB - 8GB</option>
-                <option value="16384">8GB - 16GB</option>
-                <option value="32768">16GB - 32GB</option>
-                <option value="49152">32GB - 48GB</option>
-            </select>
-        </div>
-        <div>
-            <label for="memoryTypeFilter">Filtrer par type de mémoire:</label>
-            <select id="memoryTypeFilter" class="dropdown">
-                <option value="all">Toutes</option>
-                <option value="gddr">GDDR</option>
-                <option value="gddr2">GDDR2</option>
-                <option value="gddr3">GDDR3</option>
-                <option value="gddr4">GDDR4</option>
-                <option value="gddr5">GDDR5</option>
-                <option value="gddr6">GDDR6</option>
-                <option value="gddr7">GDDR7</option>
-            </select>
-        </div>
-        <div>
-            <label for="vendorFilter">Filtrer par fournisseur:</label>
-            <select id="vendorFilter" class="dropdown">
-                <option value="all">Tous</option>
-                <option value="amd">AMD</option>
-                <option value="nvidia">Nvidia</option>
-                <option value="intel">Intel</option>
-                <option value="ati">ATI</option>
-                <option value="matrox">Matrox</option>
-            </select>
-        </div>
-        <div>
-            <table id="table"></table>
-        </div>
-        <div class="logot">
-            <img src="Logocardar.png">
-        </div>
-        
-        <nav class = "menu tiletext">
-            <ul class="Navi">
-                <li class="tile clickedtile">
-                    <a>Accueil</a>
-                </li>
-                <a href="./services.html" ><li class="tile">Ajouter</li></a>
-            </ul>
-        </nav>
-                <table class="tablo ">
-            <thead>
-                <tr>
-                    <th>
-                        <div class="flex">
-                            <span class="fgrow">Nom</span>
-                            <div id="nameAsc">⬆️</div>
-                            <div id="nameDesc">⬇️</div>
-                        </div>
-                    </th>
-                    <th>GPU</th>
-                    <th>Date de sortie</th>
-                    <th>
-                        <div class="flex">
-                            <span class="fgrow">Cores</span>
-                            <div id="coresAsc">⬆️</div>
-                            <div id="coresDesc">⬇️</div>
-                        </div>
-                    </th>
-                    <th>TMUS</th>
-                    <th>ROPS</th>
-                    <th>Memory</th>
-                    <th>Memory Type</th>
-                </tr>
-            </thead>
-            <tbody id="tbody">
+            <div>
+                <label for="memoryFilter">Filtrer par taille de mémoire:</label>
+                <select id="memoryFilter" class="dropdown">
+                    <option value="all">Toutes</option>
+                    <option value="512">Moins de 512MB</option>
+                    <option value="1024">512MB - 1GB</option>
+                    <option value="2048">1GB - 2GB</option>
+                    <option value="4096">2GB - 4GB</option>
+                    <option value="8192">4GB - 8GB</option>
+                    <option value="16384">8GB - 16GB</option>
+                    <option value="32768">16GB - 32GB</option>
+                    <option value="49152">32GB - 48GB</option>
+                </select>
+            </div>
+            <div>
+                <label for="memoryTypeFilter">Filtrer par type de mémoire:</label>
+                <select id="memoryTypeFilter" class="dropdown">
+                    <option value="all">Toutes</option>
+                    <option value="gddr">GDDR</option>
+                    <option value="gddr2">GDDR2</option>
+                    <option value="gddr3">GDDR3</option>
+                    <option value="gddr4">GDDR4</option>
+                    <option value="gddr5">GDDR5</option>
+                    <option value="gddr6">GDDR6</option>
+                    <option value="gddr7">GDDR7</option>
+                </select>
+            </div>
+            <div>
+                <label for="vendorFilter">Filtrer par fournisseur:</label>
+                <select id="vendorFilter" class="dropdown">
+                    <option value="all">Tous</option>
+                    <option value="amd">AMD</option>
+                    <option value="nvidia">Nvidia</option>
+                    <option value="intel">Intel</option>
+                    <option value="ati">ATI</option>
+                    <option value="matrox">Matrox</option>
+                </select>
+            </div>
 
-            </tbody>
-        </table>
-    </body>
+            <div>
+                <button id="resetFilters" class="styled-button">Réinitialiser les filtres</button>
+            </div>
+        </div>
+        <div class="table-container">
+            <table class="tablo">
+                <thead>
+                    <tr>
+                        <th>
+                            <div class="flex">
+                                <span class="fgrow">Nom</span>
+                                <div id="nameAsc">⬆️</div>
+                                <div id="nameDesc">⬇️</div>
+                            </div>
+                        </th>
+                        <th>GPU</th>
+                        <th>Date de sortie</th>
+                        <th>
+                            <div class="flex">
+                                <span class="fgrow">Cores</span>
+                                <div id="coresAsc">⬆️</div>
+                                <div id="coresDesc">⬇️</div>
+                            </div>
+                        </th>
+                        <th>TMUS</th>
+                        <th>ROPS</th>
+                        <th>Memory</th>
+                        <th>Memory Type</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="logot">
+        <img src="Logocardar.png">
+    </div>
+    
+    <nav class="menu tiletext">
+        <ul class="Navi">
+            <li class="tile clickedtile">
+                <a>Accueil</a>
+            </li>
+            <a href="./services.html"><li class="tile">Ajouter</li></a>
+        </ul>
+    </nav>
     <style>
         /* Add this CSS to adjust the table's position */
         table.tablo {
             margin-top: 20px; /* Adjust the value as needed */
         }
     </style>
+    <script src="./accueil.js"></script>
     <script>
-    var data = [];
-    var show_data = [];
+    document.addEventListener("DOMContentLoaded", function() {
+        var data = [];
+        var show_data = [];
+        var filters = {
+            year: "all",
+            memory: "all",
+            memoryType: "all",
+            vendor: "all",
+            generation: "all",
+            search: ""
+        };
 
-    var sort = ["name", "asc"];
+        var sort = ["cores", "desc"]; // Default sorting by cores in descending order
 
-    const fields =["Model","Code name","Launch","Cores","TMUS","ROPS","Memory Size","Memory Bus type"];
+        const fields =["Model","Code name","Launch","Cores","TMUS","ROPS","Memory Size","Memory Bus type"];
 
-    function generateTableContent() {
-        let content = "";
-        console.log(sort);
-        show_data.sort((a,b) => {
-            if(sort[0] === "name" && sort[1] === "asc") return a.Model > b.Model ? 1 : -1;
-            if(sort[0] === "name" && sort[1] === "desc") return a.Model < b.Model ? 1 : -1;
-            if(sort[0] === "cores" && sort[1] === "asc") return parseInt(a.Cores.split(" ")[0]) > parseInt(b.Cores.split(" ")[0]) ? 1 : -1;
-            if(sort[0] === "cores" && sort[1] === "desc") return parseInt(a.Cores.split(" ")[0]) < parseInt(b.Cores.split(" ")[0]) ? 1 : -1;
-            return 0;
-        }).forEach((rowData) => {
-            content += "<tr>";
-            fields.forEach((field) => {
-                content += "<td>" + rowData[field] + "</td>";            
-            })
-            content += "</tr>";
+        function applyFilters() {
+            show_data = data.filter(item => {
+                const yearMatch = filters.year === "all" || new Date(item.Launch).getFullYear() == filters.year;
+                const memoryMatch = filters.memory === "all" || parseMemorySize(item["Memory Size"]) <= filters.memory;
+                const memoryTypeMatch = filters.memoryType === "all" || item["Memory Bus type"].toLowerCase() === filters.memoryType;
+                const vendorMatch = filters.vendor === "all" || item.Vendor.toLowerCase() === filters.vendor;
+                const generationMatch = filters.generation === "all" || item.Model.includes(filters.generation);
+                const searchMatch = filters.search === "" || item.Model.toLowerCase().includes(filters.search.toLowerCase()) ||
+                    item["Code name"].toLowerCase().includes(filters.search.toLowerCase()) ||
+                    item.Cores.toLowerCase().includes(filters.search.toLowerCase()) ||
+                    item.TMUS.toLowerCase().includes(filters.search.toLowerCase()) ||
+                    item.ROPS.toLowerCase().includes(filters.search.toLowerCase()) ||
+                    item["Memory Size"].toString().toLowerCase().includes(filters.search.toLowerCase()) ||
+                    item["Memory Bus type"].toLowerCase().includes(filters.search.toLowerCase());
+                return yearMatch && memoryMatch && memoryTypeMatch && vendorMatch && generationMatch && searchMatch;
+            });
+            generateTableContent();
+        }
+
+        function generateTableContent() {
+            let content = "";
+            console.log(sort);
+            show_data.sort((a,b) => {
+                if(sort[0] === "name" && sort[1] === "asc") return a.Model > b.Model ? 1 : -1;
+                if(sort[0] === "name" && sort[1] === "desc") return a.Model < b.Model ? 1 : -1;
+                if(sort[0] === "cores" && sort[1] === "asc") return parseInt(a.Cores.split(" ")[0]) > parseInt(b.Cores.split(" ")[0]) ? 1 : -1;
+                if(sort[0] === "cores" && sort[1] === "desc") return parseInt(a.Cores.split(" ")[0]) < parseInt(b.Cores.split(" ")[0]) ? 1 : -1;
+                return 0;
+            }).forEach((rowData) => {
+                content += `<tr onclick="openDetailPage('${rowData.Model}')">`;
+                fields.forEach((field) => {
+                    content += "<td>" + rowData[field] + "</td>";            
+                })
+                content += "</tr>";
+            });
+            document.getElementById("tbody").innerHTML = content;
+        }
+
+        function openDetailPage(model) {
+            window.location.href = `detail.html?model=${encodeURIComponent(model)}`;
+        }
+
+        const requete = new ajax("https://raw.githubusercontent.com/voidful/gpu-info-api/gpu-data/gpu.json","get")
+        requete.send(function(données){
+            const keys = Object.keys(données)
+            keys.forEach(key => {
+                if (key=="Code name") return ;
+                const CG=données[key];
+                const cc = CG["Core config"] || CG["Core Config"] ||CG["Config core"] || CG["Core config12*"];
+                const[Cores,TMUS,ROPS]=cc.split(":")
+                if (CG["Model"] =="nan") CG["Model"]=key
+                data.push({
+                    GPU: key ?? "",
+                    Model: CG.Model.toString() ?? "",
+                    "Code name": CG["Code name"] ?? "",
+                    Launch: (CG.Launch ?? "").substring(0,10),
+                    Cores: Cores ?? "",
+                    TMUS: TMUS ?? "",
+                    ROPS: ROPS ?? "",
+                    "Memory Size": CG["Memory Size"] ?? CG["Memory Size (MiB)"] ?? CG["Memory Size (GiB)"] ?? "",
+                    "Memory Bus type": CG["Memory Bus type"] ??  CG["Memory Bus type"] ?? CG["Memory Bus type"] ?? "",
+                    Vendor: CG["Vendor"] ?? ""
+                })
+            });
+            show_data = data;
+            applyFilters();
+        })
+
+        document.getElementById("nameAsc").addEventListener("click", (event) => {
+            sort = ["name", "asc"]
+            generateTableContent();
         });
-        document.getElementById("tbody").innerHTML = content;
-    }
 
-    const requete = new ajax("https://raw.githubusercontent.com/voidful/gpu-info-api/gpu-data/gpu.json","get")
-    requete.send(function(données){
-        
-
-        const keys = Object.keys(données)
-        keys.forEach(key => {
-            if (key=="Code name") return ;
-            const CG=données[key];
-
-
-            const cc = CG["Core config"] || CG["Core Config"] ||CG["Config core"] || CG["Core config12*"];
-            const[Cores,TMUS,ROPS]=cc.split(":")
-            if (CG["Model"] =="nan") CG["Model"]=key
-
-
-            data.push({
-                GPU: key ?? "",
-                Model: CG.Model.toString() ?? "",
-                "Code name": CG["Code name"] ?? "",
-                Launch: (CG.Launch ?? "").substring(0,10),
-                Cores: Cores ?? "",
-                TMUS: TMUS ?? "",
-                ROPS: ROPS ?? "",
-                "Memory Size": CG["Memory Size"] ?? CG["Memory Size (MiB)"] ?? CG["Memory Size (GiB)"] ?? "",
-                "Memory Bus type": CG["Memory Bus type"] ??  CG["Memory Bus type"] ?? CG["Memory Bus type"] ?? "",
-                Vendor: CG["Vendor"] ?? ""
-            })
+        document.getElementById("nameDesc").addEventListener("click", (event) => {
+            sort = ["name", "desc"]
+            generateTableContent();
         });
 
-        show_data = data;
-        generateTableContent();
+        document.getElementById("coresDesc").addEventListener("click", (event) => {
+            sort = ["cores", "desc"]
+            generateTableContent();
+        });
 
-    })
+        document.getElementById("coresAsc").addEventListener("click", (event) => {
+            sort = ["cores", "asc"]
+            generateTableContent();
+        });
 
-    document.getElementById("nameAsc").addEventListener("click", (event) => {
-        sort = ["name", "asc"]
-        generateTableContent();
-    });
+        document.getElementById("search").addEventListener("keyup", (event) => {
+            setTimeout(() => {
+                filters.search = event.target.value;
+                applyFilters();
+            }, 200);
+        })
 
-    document.getElementById("nameDesc").addEventListener("click", (event) => {
-        sort = ["name", "desc"]
-        generateTableContent();
-    });
-
-    document.getElementById("coresDesc").addEventListener("click", (event) => {
-        sort = ["cores", "desc"]
-        generateTableContent();
-    });
-
-    document.getElementById("coresAsc").addEventListener("click", (event) => {
-        sort = ["cores", "asc"]
-        generateTableContent();
-    });
-
-    document.getElementById("search").addEventListener("keyup", (event) => {
-        setTimeout(() => {
-            console.log(event.target.value);
-            let value = '';
-            value = data.filter(value => value.Model.toLowerCase().includes(event.target.value.toLowerCase())||
-                value["Code name"].toLowerCase().includes(event.target.value.toLowerCase()) ||
-                value["Cores"].toLowerCase().includes(event.target.value.toLowerCase()) ||
-                value["TMUS"].toLowerCase().includes(event.target.value.toLowerCase())||
-                value["ROPS"].toLowerCase().includes(event.target.value.toLowerCase())||
-                value["Memory Size"].toString().toLowerCase().includes(event.target.value.toLowerCase())||
-                value["Memory Bus type"].toLowerCase().includes(event.target.value.toLowerCase())
-            );
-
-            if(value.length > 0){
-                show_data = value;
-                generateTableContent()
+        function parseMemorySize(size) {
+            if (typeof size === 'string') {
+                size = size.toLowerCase();
+                if (size.includes('gb')) {
+                    return parseFloat(size) * 1024;
+                } else if (size.includes('mb')) {
+                    return parseFloat(size);
+                }
             }
-        }, 200);
-    })
-
-    function filterByMemorySize(size) {
-        show_data = data.filter(item => parseInt(item["Memory Size"]) >= size);
-        generateTableContent();
-    }
-
-    function filterByLaunchDate(year) {
-        show_data = data.filter(item => new Date(item.Launch).getFullYear() >= year);
-        generateTableContent();
-    }
-
-    function parseMemorySize(size) {
-        if (typeof size === 'string') {
-            size = size.toLowerCase();
-            if (size.includes('gb')) {
-                return parseFloat(size) * 1024;
-            } else if (size.includes('mb')) {
-                return parseFloat(size);
-            }
+            return parseFloat(size);
         }
-        return parseFloat(size);
-    }
 
-    document.getElementById("yearFilter").addEventListener("change", (event) => {
-        const year = event.target.value;
-        if (year === "all") {
-            show_data = data;
-        } else {
-            show_data = data.filter(item => new Date(item.Launch).getFullYear() == year);
-        }
-        generateTableContent();
+        document.getElementById("yearFilter").addEventListener("change", (event) => {
+            filters.year = event.target.value;
+            applyFilters();
+        });
+
+        document.getElementById("memoryFilter").addEventListener("change", (event) => {
+            filters.memory = event.target.value;
+            applyFilters();
+        });
+
+        document.getElementById("memoryTypeFilter").addEventListener("change", (event) => {
+            filters.memoryType = event.target.value;
+            applyFilters();
+        });
+
+        document.getElementById("vendorFilter").addEventListener("change", (event) => {
+            filters.vendor = event.target.value;
+            applyFilters();
+        });
+
+        document.getElementById("gpuGenerationFilter").addEventListener("change", (event) => {
+            filters.generation = event.target.value;
+            applyFilters();
+        });
+
+        document.getElementById("resetFilters").addEventListener("click", () => {
+            filters = {
+                year: "all",
+                memory: "all",
+                memoryType: "all",
+                vendor: "all",
+                generation: "all",
+                search: ""
+            };
+            document.getElementById("yearFilter").value = "all";
+            document.getElementById("memoryFilter").value = "all";
+            document.getElementById("memoryTypeFilter").value = "all";
+            document.getElementById("vendorFilter").value = "all";
+            document.getElementById("search").value = "";
+            applyFilters();
+        });
     });
-
-    document.getElementById("memoryFilter").addEventListener("change", (event) => {
-        const memory = event.target.value;
-        if (memory === "all") {
-            show_data = data;
-        } else {
-            show_data = data.filter(item => parseMemorySize(item["Memory Size"]) <= memory);
-        }
-        generateTableContent();
-    });
-
-    document.getElementById("memoryTypeFilter").addEventListener("change", (event) => {
-        const memoryType = event.target.value;
-        if (memoryType === "all") {
-            show_data = data;
-        } else {
-            show_data = data.filter(item => item["Memory Bus type"].toLowerCase() === memoryType);
-        }
-        generateTableContent();
-    });
-
-    document.getElementById("vendorFilter").addEventListener("change", (event) => {
-        const vendor = event.target.value;
-        if (vendor === "all") {
-            show_data = data;
-        } else {
-            show_data = data.filter(item => item.Vendor.toLowerCase() === vendor);
-        }
-        generateTableContent();
-    });
-
     </script>
+</body>
 </html>
