@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="accueil.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900&display=swap" rel="stylesheet">
         <script src="./accueil.js"></script>
     <body>
         <h1 class="entete">
@@ -20,6 +20,56 @@
         <div>
             <img src="search.svg" id="mg" />
             <input placerholder="Rechercher" id="search" type="search" type="search"/>
+        </div>
+        <div>
+            <label for="yearFilter">Filtrer par année de lancement:</label>
+            <select id="yearFilter" class="dropdown">
+                <option value="all">Toutes</option>
+                <!-- Generate options for years 2000 to 2025 -->
+                <script>
+                    for (let year = 2000; year <= 2025; year++) {
+                        document.write(`<option value="${year}">${year}</option>`);
+                    }
+                </script>
+            </select>
+        </div>
+        <div>
+            <label for="memoryFilter">Filtrer par taille de mémoire:</label>
+            <select id="memoryFilter" class="dropdown">
+                <option value="all">Toutes</option>
+                <option value="512">Moins de 512MB</option>
+                <option value="1024">512MB - 1GB</option>
+                <option value="2048">1GB - 2GB</option>
+                <option value="4096">2GB - 4GB</option>
+                <option value="8192">4GB - 8GB</option>
+                <option value="16384">8GB - 16GB</option>
+                <option value="32768">16GB - 32GB</option>
+                <option value="49152">32GB - 48GB</option>
+            </select>
+        </div>
+        <div>
+            <label for="memoryTypeFilter">Filtrer par type de mémoire:</label>
+            <select id="memoryTypeFilter" class="dropdown">
+                <option value="all">Toutes</option>
+                <option value="gddr">GDDR</option>
+                <option value="gddr2">GDDR2</option>
+                <option value="gddr3">GDDR3</option>
+                <option value="gddr4">GDDR4</option>
+                <option value="gddr5">GDDR5</option>
+                <option value="gddr6">GDDR6</option>
+                <option value="gddr7">GDDR7</option>
+            </select>
+        </div>
+        <div>
+            <label for="vendorFilter">Filtrer par fournisseur:</label>
+            <select id="vendorFilter" class="dropdown">
+                <option value="all">Tous</option>
+                <option value="amd">AMD</option>
+                <option value="nvidia">Nvidia</option>
+                <option value="intel">Intel</option>
+                <option value="ati">ATI</option>
+                <option value="matrox">Matrox</option>
+            </select>
         </div>
         <div>
             <table id="table"></table>
@@ -66,6 +116,12 @@
             </tbody>
         </table>
     </body>
+    <style>
+        /* Add this CSS to adjust the table's position */
+        table.tablo {
+            margin-top: 20px; /* Adjust the value as needed */
+        }
+    </style>
     <script>
     var data = [];
     var show_data = [];
@@ -117,7 +173,8 @@
                 TMUS: TMUS ?? "",
                 ROPS: ROPS ?? "",
                 "Memory Size": CG["Memory Size"] ?? CG["Memory Size (MiB)"] ?? CG["Memory Size (GiB)"] ?? "",
-                "Memory Bus type": CG["Memory Bus type"] ??  CG["Memory Bus type"] ?? CG["Memory Bus type"] ?? ""
+                "Memory Bus type": CG["Memory Bus type"] ??  CG["Memory Bus type"] ?? CG["Memory Bus type"] ?? "",
+                Vendor: CG["Vendor"] ?? ""
             })
         });
 
@@ -166,5 +223,67 @@
         }, 200);
     })
 
+    function filterByMemorySize(size) {
+        show_data = data.filter(item => parseInt(item["Memory Size"]) >= size);
+        generateTableContent();
+    }
+
+    function filterByLaunchDate(year) {
+        show_data = data.filter(item => new Date(item.Launch).getFullYear() >= year);
+        generateTableContent();
+    }
+
+    function parseMemorySize(size) {
+        if (typeof size === 'string') {
+            size = size.toLowerCase();
+            if (size.includes('gb')) {
+                return parseFloat(size) * 1024;
+            } else if (size.includes('mb')) {
+                return parseFloat(size);
+            }
+        }
+        return parseFloat(size);
+    }
+
+    document.getElementById("yearFilter").addEventListener("change", (event) => {
+        const year = event.target.value;
+        if (year === "all") {
+            show_data = data;
+        } else {
+            show_data = data.filter(item => new Date(item.Launch).getFullYear() == year);
+        }
+        generateTableContent();
+    });
+
+    document.getElementById("memoryFilter").addEventListener("change", (event) => {
+        const memory = event.target.value;
+        if (memory === "all") {
+            show_data = data;
+        } else {
+            show_data = data.filter(item => parseMemorySize(item["Memory Size"]) <= memory);
+        }
+        generateTableContent();
+    });
+
+    document.getElementById("memoryTypeFilter").addEventListener("change", (event) => {
+        const memoryType = event.target.value;
+        if (memoryType === "all") {
+            show_data = data;
+        } else {
+            show_data = data.filter(item => item["Memory Bus type"].toLowerCase() === memoryType);
+        }
+        generateTableContent();
+    });
+
+    document.getElementById("vendorFilter").addEventListener("change", (event) => {
+        const vendor = event.target.value;
+        if (vendor === "all") {
+            show_data = data;
+        } else {
+            show_data = data.filter(item => item.Vendor.toLowerCase() === vendor);
+        }
+        generateTableContent();
+    });
 
     </script>
+</html>
