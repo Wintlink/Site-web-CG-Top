@@ -97,13 +97,7 @@
             <table class="tablo">
                 <thead>
                     <tr>
-                        <th>
-                            <div class="flex">
-                                <span class="fgrow">Nom</span>
-                                <div id="nameAsc">⬆️</div>
-                                <div id="nameDesc">⬇️</div>
-                            </div>
-                        </th>
+                        <th>Nom</th>
                         <th>GPU</th>
                         <th>Date de sortie</th>
                         <th>
@@ -113,10 +107,10 @@
                                 <div id="coresDesc">⬇️</div>
                             </div>
                         </th>
-                        <th>TMUS</th>
-                        <th>ROPS</th>
-                        <th>Memory</th>
-                        <th>Memory Type</th>
+                        <th>Base Clock</th>
+                        <th>Boost Clock</th>
+                        <th>Qté_Vram</th>
+                        <th>Type_mem</th>
                     </tr>
                 </thead>
                 <tbody id="tbody">
@@ -140,7 +134,7 @@
     </nav>
 
     <script src="./accueil.js"></script>
-    <script>
+    <!-- <script>
     document.addEventListener("DOMContentLoaded", function() {
         var data = [];
         var show_data = [];
@@ -164,8 +158,8 @@
                 const memoryTypeMatch = filters.memoryType === "all" || item.MemoryBusType.toLowerCase() === filters.memoryType;
                 const vendorMatch = filters.vendor === "all" || item.Vendor.toLowerCase() === filters.vendor;
                 const generationMatch = filters.generation === "all" || item.Model.includes(filters.generation);
-                const searchMatch = filters.search === "" || item.Model.toLowerCase().includes(filters.search.toLowerCase()) ||
-                    item.CodeName.toLowerCase().includes(filters.search.to.lowerCase()) ||
+                const searchMatch = filters.search === "" || item.Model.toLowerCase().includes(filters.search.to.lowerCase()) ||
+                    item.CodeName.to.lowerCase().includes(filters.search.to.lowerCase()) ||
                     item.Cores.to.lowerCase().includes(filters.search.to.lowerCase()) ||
                     item.TMUS.to.lowerCase().includes(filters.search.to.lowerCase()) ||
                     item.ROPS.to.lowerCase().includes(filters.search.to.lowerCase()) ||
@@ -300,6 +294,6 @@
             applyFilters();
         });
     });
-    </script>
+    </script> -->
 </body>
 </html>

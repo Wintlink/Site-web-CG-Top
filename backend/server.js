@@ -12,17 +12,21 @@ const config = {
     database: 'PM-RobinTerry',
     options: {
         encrypt: true, // Use encryption
-        enableArithAbort: true
+        enableArithAbort: true,
+        trustServerCertificate: true
     }
 };
 
-sql.connect(config).then(pool => {
-    if (pool.connected) {
+async function connectToDatabase() {
+    try {
+        await sql.connect(config);
         console.log('Connected to the database successfully');
+    } catch (err) {
+        console.error('Database connection failed: ', err);
     }
-}).catch(err => {
-    console.error('Database connection failed: ', err);
-});
+}
+
+connectToDatabase();
 
 app.use(cors());
 
@@ -39,7 +43,8 @@ app.get('/api/gpus', async (req, res) => {
 app.get('/api/gpus/:model', async (req, res) => {
     const model = req.params.model;
     try {
-        const result = await sql.query(`SELECT * FROM dbo.Carte_Graphique WHERE Model = '${model}'`);
+        const result = await sql.query(`SELECT * FROM dbo.Carte_Graphique WHERE GPU = '${model}'`);
+        if (!result.recordset.length) res.status(404).send('GPU not found');
         res.json(result.recordset[0]);
     } catch (err) {
         console.error('SQL query failed: ', err);

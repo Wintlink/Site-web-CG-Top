@@ -35,22 +35,22 @@ document.addEventListener("DOMContentLoaded", function() {
 
     var sort = ["cores", "desc"]; // Default sorting by cores in descending order
 
-    const fields = ["Model", "CodeName", "Launch", "Cores", "TMUS", "ROPS", "MemorySize", "MemoryBusType"];
+    const fields = ["Nom_CG", "GPU", "Date_de_sortie", "Coeurs", "Base_Clock", "Boost_Clock", "Qté_Vram", "Type_mem"];
 
     function applyFilters() {
         show_data = data.filter(item => {
-            const yearMatch = filters.year === "all" || new Date(item.Launch).getFullYear() == filters.year;
-            const memoryMatch = filters.memory === "all" || parseMemorySize(item.MemorySize) <= filters.memory;
-            const memoryTypeMatch = filters.memoryType === "all" || item.MemoryBusType.toLowerCase() === filters.memoryType;
+            const yearMatch = filters.year === "all" || new Date(item.Date_de_sortie).getFullYear() == filters.year;
+            const memoryMatch = filters.memory === "all" || parseMemorySize(item.Qté_Vram) <= filters.memory;
+            const memoryTypeMatch = filters.memoryType === "all" || item.Type_mem.toLowerCase() === filters.memoryType;
             const vendorMatch = filters.vendor === "all" || item.Vendor.toLowerCase() === filters.vendor;
-            const generationMatch = filters.generation === "all" || item.Model.includes(filters.generation);
-            const searchMatch = filters.search === "" || item.Model.toLowerCase().includes(filters.search.toLowerCase()) ||
-                item.CodeName.toLowerCase().includes(filters.search.to.lowerCase()) ||
-                item.Cores.to.lowerCase().includes(filters.search.to.lowerCase()) ||
-                item.TMUS.to.lowerCase().includes(filters.search.to.lowerCase()) ||
-                item.ROPS.to.lowerCase().includes(filters.search.to.lowerCase()) ||
-                item.MemorySize.toString().to.lowerCase().includes(filters.search.to.lowerCase()) ||
-                item.MemoryBusType.to.lowerCase().includes(filters.search.to.lowerCase());
+            const generationMatch = filters.generation === "all" || item.Nom_CG.includes(filters.generation);
+            const searchMatch = filters.search === "" || item.Nom_CG.toLowerCase().includes(filters.search.toLowerCase()) ||
+                item.GPU.toLowerCase().includes(filters.search.to.lowerCase()) ||
+                item.Coeurs.toString().to.lowerCase().includes(filters.search.to.lowerCase()) ||
+                item.Base_Clock.toString().to.lowerCase().includes(filters.search.to.lowerCase()) ||
+                item.Boost_Clock.to.lowerCase().includes(filters.search.to.lowerCase()) ||
+                item.Qté_Vram.toString().to.lowerCase().includes(filters.search.to.lowerCase()) ||
+                item.Type_mem.to.lowerCase().includes(filters.search.to.lowerCase());
             return yearMatch && memoryMatch && memoryTypeMatch && vendorMatch && generationMatch && searchMatch;
         });
         generateTableContent();
@@ -60,13 +60,13 @@ document.addEventListener("DOMContentLoaded", function() {
         let content = "";
         console.log(sort);
         show_data.sort((a, b) => {
-            if (sort[0] === "name" && sort[1] === "asc") return a.Model > b.Model ? 1 : -1;
-            if (sort[0] === "name" && sort[1] === "desc") return a.Model < b.Model ? 1 : -1;
-            if (sort[0] === "cores" && sort[1] === "asc") return parseInt(a.Cores.split(" ")[0]) > parseInt(b.Cores.split(" ")[0]) ? 1 : -1;
-            if (sort[0] === "cores" && sort[1] === "desc") return parseInt(a.Cores.split(" ")[0]) < parseInt(b.Cores.split(" ")[0]) ? 1 : -1;
+            if (sort[0] === "name" && sort[1] === "asc") return a.Nom_CG > b.Nom_CG ? 1 : -1;
+            if (sort[0] === "name" && sort[1] === "desc") return a.Nom_CG < b.Nom_CG ? 1 : -1;
+            if (sort[0] === "cores" && sort[1] === "asc") return parseInt(a.Coeurs) > parseInt(b.Coeurs) ? 1 : -1;
+            if (sort[0] === "cores" && sort[1] === "desc") return parseInt(a.Coeurs) < parseInt(b.Coeurs) ? 1 : -1;
             return 0;
         }).forEach((rowData) => {
-            content += `<tr onclick="openDetailPage('${rowData.Model}')">`;
+            content += `<tr onclick="openDetailPage('${rowData.Nom_CG}')">`;
             fields.forEach((field) => {
                 content += "<td>" + rowData[field] + "</td>";
             })
@@ -79,18 +79,16 @@ document.addEventListener("DOMContentLoaded", function() {
     const requete = new ajax(url);
     requete.send(function(données) {
         données.forEach(item => {
-            const coreConfig = item.CoreConfig;
-            const [Cores, TMUS, ROPS] = coreConfig.split(":");
+            console.log(item);
             data.push({
+                Nom_CG: item.Nom_CG ?? "",
                 GPU: item.GPU ?? "",
-                Model: item.Model.toString() ?? "",
-                CodeName: item.CodeName ?? "",
-                Launch: (item.Launch ?? "").substring(0, 10),
-                Cores: Cores ?? "",
-                TMUS: TMUS ?? "",
-                ROPS: ROPS ?? "",
-                MemorySize: item.MemorySize ?? "",
-                MemoryBusType: item.MemoryBusType ?? "",
+                Date_de_sortie: (item.Date_de_sortie ?? "").substring(0, 10),
+                Coeurs: item.Coeurs ?? "",
+                Base_Clock: item.Base_clock ?? "",
+                Boost_Clock: item.Boost_clock ?? "",
+                Qté_Vram: item.Qt_Vram ?? "",
+                Type_mem: item.Type_mem ?? "",
                 Vendor: item.Vendor ?? ""
             });
         });

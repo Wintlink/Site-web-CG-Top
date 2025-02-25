@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>Connexion Admin</title>
+        <link rel="stylesheet" href="accueil.css">
+        <link rel="stylesheet" href="admin.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <h1 class="entete">
+            <div class="titre noto">
+                Cardar
+            </div>
+        </h1>
+        <div class="logot">
+            <img src="Logocardar.png">
+        </div>
+        
+        <nav class = "menu tiletext">
+            <ul class="Navi ">
+                <a href="./accueil.html"><li class="tile">Accueil</li></a>
+                <li class="clickedtile">
+                    <a>Ajouter</a>
+                </li>
+            </ul>
+        </nav>
+        
+        <div class="logo-container">
+            <img src="police-cap.png" alt="Logo Admin" class="admin-logo">
+        </div>
+   
+        <form id="loginForm">
+            
+            <input type="text" id="username" name="username" placeholder="Nom d'utilisateur" required>
+        
+        
+            <input type="password" id="password" name="password" placeholder="Mot de passe" required>
+        
+        <button type="submit">Se Connecter</button>
+        <p id="errorMessage" style="color: red;"></p> <!-- Message d'erreur -->
+        </form>
+
+    </body>
+</html>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('loginForm');
+        const errorMessage = document.getElementById('errorMessage');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Empêche la soumission par défaut
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Informations d'identification
+            const validUsername = 'admin';
+            const validPassword = 'password';
+
+            if (username === validUsername && password === validPassword) {
+                // Authentification réussie
+                window.location.href = 'ajout.html';
+            } else {
+                // Authentification échouée
+                errorMessage.textContent = 'Nom d\'utilisateur ou mot de passe incorrect.';
+            }
+        });
+    });
+</script>
