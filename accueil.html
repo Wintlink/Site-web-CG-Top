@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900&display=swap" rel="stylesheet">
+    <script src="./accueil.js"></script>
 </head>
 <body>
     <h1 class="entete">
@@ -136,7 +137,6 @@
             </li>
         </ul>
         <a href="./ajout.html"><li class="tile">Ajouter</li></a>
-        
     </nav>
 
     <script src="./accueil.js"></script>
@@ -165,9 +165,9 @@
                 const vendorMatch = filters.vendor === "all" || item.Vendor.toLowerCase() === filters.vendor;
                 const generationMatch = filters.generation === "all" || item.Model.includes(filters.generation);
                 const searchMatch = filters.search === "" || item.Model.toLowerCase().includes(filters.search.toLowerCase()) ||
-                    item["Code name"].toLowerCase().includes(filters.search.toLowerCase()) ||
-                    item.Cores.toLowerCase().includes(filters.search.toLowerCase()) ||
-                    item.TMUS.toLowerCase().includes(filters.search.to.lowerCase()) ||
+                    item["Code name"].toLowerCase().includes(filters.search.to.lowerCase()) ||
+                    item.Cores.to.lowerCase().includes(filters.search.to.lowerCase()) ||
+                    item.TMUS.to.lowerCase().includes(filters.search.to.lowerCase()) ||
                     item.ROPS.to.lowerCase().includes(filters.search.to.lowerCase()) ||
                     item["Memory Size"].toString().to.lowerCase().includes(filters.search.to.lowerCase()) ||
                     item["Memory Bus type"].to.lowerCase().includes(filters.search.to.lowerCase());

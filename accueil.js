@@ -1,19 +1,22 @@
-class ajax {
-    constructor(url, method, options) {
+class ajax{
+
+    constructor (url, method, options) {
         this.url = url;
         this.method = method;
         this.options = options;
+
+
     }
     send(callback) {
-        const http = new XMLHttpRequest();
-        http.onload = function() {
-            callback(JSON.parse(http.response));
+        const http=new XMLHttpRequest(
+            
+        );
+        http.onload=function(){
+            callback(JSON.parse(http.response))
         }
-        http.open(this.method, this.url, this.options);
-        http.send();
-    }
-}
+        http.open(this.method,this.url,this.options)
+        http.send()
 
-function openDetailPage(model) {
-    window.location.href = `detail.html?model=${encodeURIComponent(model)}`;
+    }
+
 }
