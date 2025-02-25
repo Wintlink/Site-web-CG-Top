@@ -35,22 +35,22 @@ document.addEventListener("DOMContentLoaded", function() {
 
     var sort = ["cores", "desc"]; // Default sorting by cores in descending order
 
-    const fields = ["Nom_CG", "GPU", "Date_de_sortie", "Coeurs", "Base_Clock", "Boost_Clock", "Qté_Vram", "Type_mem"];
+    const fields = ["Nom_CG", "GPU", "Date_de_sortie", "Coeurs", "Base_Clock", "Boost_Clock", "VRAM", "Type_mem"];
 
     function applyFilters() {
         show_data = data.filter(item => {
             const yearMatch = filters.year === "all" || new Date(item.Date_de_sortie).getFullYear() == filters.year;
-            const memoryMatch = filters.memory === "all" || parseMemorySize(item.Qté_Vram) <= filters.memory;
+            const memoryMatch = filters.memory === "all" || parseMemorySize(item.VRAM) <= filters.memory;
             const memoryTypeMatch = filters.memoryType === "all" || item.Type_mem.toLowerCase() === filters.memoryType;
             const vendorMatch = filters.vendor === "all" || item.Vendor.toLowerCase() === filters.vendor;
             const generationMatch = filters.generation === "all" || item.Nom_CG.includes(filters.generation);
             const searchMatch = filters.search === "" || item.Nom_CG.toLowerCase().includes(filters.search.toLowerCase()) ||
-                item.GPU.toLowerCase().includes(filters.search.to.lowerCase()) ||
-                item.Coeurs.toString().to.lowerCase().includes(filters.search.to.lowerCase()) ||
-                item.Base_Clock.toString().to.lowerCase().includes(filters.search.to.lowerCase()) ||
-                item.Boost_Clock.to.lowerCase().includes(filters.search.to.lowerCase()) ||
-                item.Qté_Vram.toString().to.lowerCase().includes(filters.search.to.lowerCase()) ||
-                item.Type_mem.to.lowerCase().includes(filters.search.to.lowerCase());
+                item.GPU.toLowerCase().includes(filters.search.toLowerCase()) ||
+                item.Coeurs.toString().toLowerCase().includes(filters.search.toLowerCase()) ||
+                item.Base_Clock.toString().toLowerCase().includes(filters.search.toLowerCase()) ||
+                item.Boost_Clock.toLowerCase().includes(filters.search.toLowerCase()) ||
+                item.VRAM.toString().toLowerCase().includes(filters.search.toLowerCase()) ||
+                item.Type_mem.toLowerCase().includes(filters.search.toLowerCase());
             return yearMatch && memoryMatch && memoryTypeMatch && vendorMatch && generationMatch && searchMatch;
         });
         generateTableContent();
@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 Coeurs: item.Coeurs ?? "",
                 Base_Clock: item.Base_clock ?? "",
                 Boost_Clock: item.Boost_clock ?? "",
-                Qté_Vram: item.Qt_Vram ?? "",
+                VRAM: item.Qte_VRAM ?? "",
                 Type_mem: item.Type_mem ?? "",
                 Vendor: item.Vendor ?? ""
             });

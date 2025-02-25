@@ -41,9 +41,9 @@ app.get('/api/gpus', async (req, res) => {
 });
 
 app.get('/api/gpus/:model', async (req, res) => {
-    const model = req.params.model;
+    const model = decodeURIComponent(req.params.model);
     try {
-        const result = await sql.query(`SELECT * FROM dbo.Carte_Graphique WHERE GPU = '${model}'`);
+        const result = await sql.query`SELECT * FROM dbo.Carte_Graphique WHERE Nom_CG = ${model}`;
         if (!result.recordset.length) res.status(404).send('GPU not found');
         res.json(result.recordset[0]);
     } catch (err) {

@@ -3,9 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>Détails de la carte graphique</title>
-    <link rel="stylesheet" href="accueil.css">
     <link rel="stylesheet" href="detail.css">
-    <script src="./detail.js"></script>
 </head>
 <body>
     <h1 class="entete">
@@ -18,17 +16,18 @@
         <button id="techpowerupButton">🔍 Rechercher sur TechPowerUp</button>
         <button id="backButton">🔙 Retour</button>
     </div>
-</body>
-<script>
-document.getElementById("techpowerupButton").addEventListener("click", function() {
-    const model = new URLSearchParams(window.location.search).get('model');
-    if (model) {
-        window.open(`https://www.techpowerup.com/gpu-specs/?ajaxsrch=${encodeURIComponent(model)}`, '_blank');
-    }
-});
+    <script src="./detail.js"></script>
+    <script>
+    document.getElementById("techpowerupButton").addEventListener("click", function() {
+        const model = new URLSearchParams(window.location.search).get('model');
+        if (model) {
+            window.open(`https://www.techpowerup.com/gpu-specs/?ajaxsrch=${encodeURIComponent(model)}`, '_blank');
+        }
+    });
 
-document.getElementById("backButton").addEventListener("click", function() {
-    window.history.back();
-});
-</script>
+    document.getElementById("backButton").addEventListener("click", function() {
+        window.history.back();
+    });
+    </script>
+</body>
 </html>
