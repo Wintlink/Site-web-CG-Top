@@ -19,10 +19,12 @@
             <img src="Logocardar.png">
         </div>
         
-        <nav class="menu tiletext">
-            <ul class="Navi">
-                <li class="tile"><a href="./accueil.html">Accueil</a></li>
-                <li class="tile"><a href="./admin.html">Ajouter</a></li>
+        <nav class = "menu tiletext">
+            <ul class="Navi ">
+                <a href="./accueil.html"><li class="tile">Accueil</li></a>
+                <li class="clickedtile">
+                    <a>Ajouter</a>
+                </li>
             </ul>
         </nav>
         
@@ -30,20 +32,42 @@
             <img src="police-cap.png" alt="Logo Admin" class="admin-logo">
         </div>
    
-        <form>
-            <div class="centerElement">
-                <input name="nom_d'utilisateur" placeholder="Nom d'utilisateur" id="nom_d'utilisateur" type="text"/> 
-            </div>
-
-            <div class="centerElement">
-                <input name="mdp" placeholder="Mot de passe" id="mdp" type="text"/> 
-            </div>
-
-            <div class="centerElement">
-                <button type="submit" id="seconnecter">Se connecter</button>
-            </div>
-              
+        <form id="loginForm">
+            
+            <input type="text" id="username" name="username" placeholder="Nom d'utilisateur" required>
+        
+        
+            <input type="password" id="password" name="password" placeholder="Mot de passe" required>
+        
+        <button type="submit">Se Connecter</button>
+        <p id="errorMessage" style="color: red;"></p> <!-- Message d'erreur -->
         </form>
+
     </body>
 </html>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('loginForm');
+        const errorMessage = document.getElementById('errorMessage');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Empêche la soumission par défaut
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Informations d'identification
+            const validUsername = 'admin';
+            const validPassword = 'password';
+
+            if (username === validUsername && password === validPassword) {
+                // Authentification réussie
+                window.location.href = 'ajout.html';
+            } else {
+                // Authentification échouée
+                errorMessage.textContent = 'Nom d\'utilisateur ou mot de passe incorrect.';
+            }
+        });
+    });
+</script>
