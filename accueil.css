@@ -10,40 +10,29 @@
 
     top: 36%;
 }
-.tile, .tile a {
+.tile{
     position: center;
     background-color: rgb(32, 70, 90);
-    transition: background-color 400ms linear, transform 0.3s ease;
+    transition: background-color 400ms linear;
     width: 100%;
     color: aliceblue;
     margin-top: 10px;
     padding: 10px;
     margin-left: 15%;
-    text-decoration: none;
-    display: block;
-    text-align: center;
 }
-.tile:hover, .tile a:hover {
+.tile:hover{
     background-color: rgba(7,81,142,255);
     box-shadow: grey 8px 2px 8px 0;
-    transform: scale(1.05);
 }
-.clickedtile {
+.clickedtile{
     position: center;
-    background-color: rgba(5, 124, 189, 0.8);
-    transition: background-color 200ms linear, transform 0.3s ease;
+    background-color: rgb(5, 124, 189);
+    transition: background-color 200ms linear;
     width: 100%;
     color: aliceblue;
     margin-top: 10px;
     padding: 10px;
     margin-left: 15%;
-    text-decoration: none;
-    display: block;
-    text-align: center;
-}
-.clickedtile:hover, .clickedtile a:hover {
-    background-color: rgba(5, 124, 189, 0.6);
-    transform: scale(1.05);
 }
 .tiletext{
     text-align: center;
@@ -102,10 +91,10 @@ body{
 }
 .tablo{
     color: white;
-    font-family: "Noto Sans", serif;
+    font-family: "Noto Sans",serif;
     content: center;
-    margin: 20px auto; /* Center the table horizontally */
-    margin-top: 50px; /* Move the table closer to the top */
+    margin-top:-100px;
+
 }
 .formula{
     font-family: "Noto Sans",serif;
@@ -117,43 +106,15 @@ textarea {
 button {
     display: inline-block;
     padding: 10px 15px;
-    margin: 10px;
+    margin-right: 10px;
     border: none;
     border-radius: 4px;
     background-color: #4CAF50;
-    color: white;
+    color: rgb(46, 94, 162);
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
-
-button:hover {
-    background-color: #45a049;
-}
-
-button.styled-button {
-    display: inline-block;
-    padding: 10px 20px;
-    margin: 10px 0;
-    border: none;
-    border-radius: 4px;
-    background-color: rgb(32, 70, 90);
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-button.styled-button:hover {
-    background-color: rgba(7,81,142,255);
-    transform: scale(1.05);
-}
-
-button.styled-button:active {
-    background-color: rgba(5, 124, 189, 0.8);
-    transform: scale(1);
-}
-
 input:focus,
 textarea:focus,
 select:focus {
@@ -173,14 +134,13 @@ form {
 }
 
 label {
-    color: white;
-    font-family: "Noto Sans", serif;
-    font-size: 14px;
-    margin: 10px 0;
     display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #ffffff;
 }
 table {
-    width: 100%;
+    width: 68%;
     border-collapse: collapse;
     margin: 20px auto;
 }
@@ -254,48 +214,22 @@ tr:nth-child(even) {
     cursor: pointer; 
 }
 
-select {
-    background-color: #0a2b47;
+.tile a {
     color: white;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 5px;
-    font-family: "Noto Sans", serif;
-    font-size: 14px;
-    margin: 10px 20px; /* Adjusted side margin */
-    width: 200px;
-    box-sizing: border-box;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    text-decoration: none;
 }
 
-select:focus {
-    background-color: #0c3a5a;
-    color: #fff;
-    outline: none;
-    box-shadow: 0 0 4px rgba(76, 175, 80, 0.5);
+nav ul li .tile a {
+    color: white;
+    text-decoration: none;
 }
 
-.filter-container {
-    position: absolute;
-    left: 20px;
-    top: 400px; /* Adjusted to be below the page selector menu */
-    width: 220px;
+.tile a {
+    color: white !important;
+    text-decoration: none !important;
 }
 
-.main-content {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-    align-items: flex-start; /* Align items at the top */
-}
-
-.filters {
-    width: 20%;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.table-container {
-    width: 80%; /* Increase the width of the table container */
+nav a, nav a:visited, nav a:hover, nav a:active {
+    text-decoration: none !important;
+    color: white !important;
 }
