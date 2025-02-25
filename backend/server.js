@@ -37,7 +37,7 @@ app.use(bodyParser.urlencoded({
 
 app.get('/api/gpus', async (req, res) => {
     try {
-        const result = await sql.query('SELECT * FROM dbo.Carte_Graphique LEFT JOIN dbo.Nom_Constructeur ON dbo.Carte_Graphique.Id_Nom_Constructeur = dbo.Nom_Constructeur.Id_Nom_Constructeur');
+        const result = await sql.query('SELECT * FROM dbo.Carte_Graphique LEFT JOIN dbo.Constructeur ON dbo.Carte_Graphique.Id_Constructeur = dbo.Constructeur.Id_Constructeur');
         res.json(result.recordset);
     } catch (err) {
         console.error('SQL query failed: ', err);
