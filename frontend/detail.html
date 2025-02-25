@@ -3,7 +3,11 @@
 <head>
     <meta charset="utf-8">
     <title>Détails de la carte graphique</title>
-    <link rel="stylesheet" href="detail.css">
+    <link rel="stylesheet" href="./assets/css/detail.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <h1 class="entete">
@@ -16,18 +20,8 @@
         <button id="techpowerupButton">🔍 Rechercher sur TechPowerUp</button>
         <button id="backButton">🔙 Retour</button>
     </div>
-    <script src="./detail.js"></script>
-    <script>
-    document.getElementById("techpowerupButton").addEventListener("click", function() {
-        const model = new URLSearchParams(window.location.search).get('model');
-        if (model) {
-            window.open(`https://www.techpowerup.com/gpu-specs/?ajaxsrch=${encodeURIComponent(model)}`, '_blank');
-        }
-    });
-
-    document.getElementById("backButton").addEventListener("click", function() {
-        window.history.back();
-    });
-    </script>
+    
+    <script src="./assets/js/ajax.js"></script>
+    <script src="./assets/js/detail.js"></script>
 </body>
 </html>

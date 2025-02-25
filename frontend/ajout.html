@@ -3,8 +3,8 @@
     <head>
         <meta charset="utf-8">
         <title>Ajout</title>
-        <link rel="stylesheet" href="accueil.css">
-        <link rel="stylesheet" type="text/css" href="ajout.css">
+        <link rel="stylesheet" href="./assets/css/accueil.css">
+        <link rel="stylesheet" type="text/css" href="./assets/css/ajout.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -15,12 +15,12 @@
             </div>
         </h1>
         <div class="logot">
-            <img src="Logocardar.png">
+            <img src="./assets/images/Logocardar.png">
         </div>
         
         <nav class = "menu tiletext">
             <ul class="Navi ">
-                <a href="./accueil.html"><li class="tile">Accueil</li></a>
+                <a href="./index.html"><li class="tile">Accueil</li></a>
                 <li class="clickedtile">
                     <a>Ajouter</a>
                 </li>
@@ -29,136 +29,113 @@
             </ul>
         </nav>
 
-            <form id="form" name="form"class="centered-form">               
+        <form id="form" name="form"class="centered-form">               
 
-                <div class="centerElement">
-                    <input name="manufacturer" placeholder="manufacturer" id="manufacturer" type="text" />
-                </div>
-                <div class="centerElement">
-                    <input name="name" placeholder="name" id="name" type="text" />
-                </div>
-                <div class="centerElement">
-                    <input name="gpu_name" placeholder="gpu_name" id="gpu_name" type="text" />
-                </div>
-                <div class="centerElement">
-                    <input name="generation" placeholder="generation" id="generation" type="text" />
-                </div>
-                <div class="centerElement">
-                    <input name="base_clock_mhz" placeholder="base_clock_mhz" id="base_clock_mhz" type="text" />
-                </div>
-                <div class="centerElement">
-                    <input name="boost_clock_mhz" placeholder="boost_clock_mhz" id="boost_clock_mhz" type="text" />
-                </div>
-                <div class="centerElement">
-                    <input name="architecture" placeholder="architecture" id="architecture" type="text" />
-                </div>
-                <div class="centerElement">
-                    <input name="foundry" placeholder="foundry" id="foundry" type="text" />
-                </div>
-                <div class="centerElement">
-                    <input name="process_size_nm" placeholder="process_size_nm" id="process_size_nm" type="text" />
-                </div>
-                <div class="centerElement">
-                    <input name="die_size_mm2" placeholder="die_size_mm2" id="die_size_mm2" type="text" />
-                </div>
-                <div class="centerElement">
-                    <input name="release_date" placeholder="release_date" id="release_date" type="text" />
-                </div>
-                <div class="centerElement">
-                    <input name="bus_interface" placeholder="bus_interface" id="bus_interface" type="text" />
-                </div>
-                <div class="centerElement">
-                    <input name="memory_clock_mhz" placeholder="memory_clock_mhz" id="memory_clock_mhz" type="text" />
-                </div>
-                <div class="centerElement">
-                    <input name="memory_size_gb" placeholder="memory_size_gb" id="memory_size_gb" type="text" />
-                </div>
-                <div class="centerElement">
-                    <input name="memory_bandwidth_gb_s" placeholder="memory_bandwidth_gb_s" id="memory_bandwidth_gb_s" type="text" />
-                </div>
-                <div class="centerElement">
-                    <input name="memory_type" placeholder="memory_type" id="memory_type" type="text" />
-                </div>
-                <div class="centerElement">
-                    <input name="shading_units" placeholder="shading_units" id="shading_units" type="text" />
-                </div>
-                <div class="centerElement">
-                    <input name="tensor_cores" placeholder="tensor_cores" id="tensor_cores" type="text" />
-                </div>
-                <div class="centerElement">
-                    <input name="ray_tracing_cores" placeholder="ray_tracing_cores" id="ray_tracing_cores" type="text" />
-                </div>
-                <div class="centerElement">
-                    <input name="thermal_design_power_w" placeholder="thermal_design_power_w" id="thermal_design_power_w" type="text" />
-                </div>
-                <div class="centerElement">
-                    <input name="board_length_mm" placeholder="board_length_mm" id="board_length_mm" type="text" />
-                </div>
-                <div class="centerElement">
-                    <input name="board_width_mm" placeholder="board_width_mm" id="board_width_mm" type="text" />
-                </div>
-                <div class="centerElement">
-                    <input name="board_slot_width" placeholder="board_slot_width" id="board_slot_width" type="text" />
-                </div>
-                <div class="centerElement">
-                    <input name="suggested_psu_w" placeholder="suggested_psu_w" id="suggested_psu_w" type="text" />
-                </div>
-                <div class="centerElement">
-                    <input name="power_connectors" placeholder="power_connectors" id="power_connectors" type="text" />
-                </div>
-                <div class="centerElement">
-                    <input name="display_connectors" placeholder="display_connectors" id="display_connectors" type="text" />
-                </div>
-                <div class="centerElement">
-                    <input name="tpu_url" placeholder="tpu_url" id="tpu_url" type="text" />
-                </div>
-                    
-                <div class="centerElement">
-                    <button type="submit" id="enregistrer"> Enregistrer </button>
-                </div>
-                  
-            </form>
-        </body>
+        <div class="centerElement">
+            <button type="button" id="randomData">Remplir avec des données aléatoires</button>
+            <button type="submit" id="enregistrer">Envoyer le formulaire</button>
+        </div>
+
+            <div class="centerElement">
+                <label for="Nom_CG">Nom CG</label>
+                <input name="Nom_CG" placeholder="Nom CG" id="Nom_CG" type="text" />
+            </div>
+            <div class="centerElement">
+                <label for="GPU">GPU</label>
+                <input name="GPU" placeholder="GPU" id="GPU" type="text" />
+            </div>
+            <div class="centerElement">
+                <label for="Generation">Generation</label>
+                <input name="Generation" placeholder="Generation" id="Generation" type="text" />
+            </div>
+            <div class="centerElement">
+                <label for="Base_clock">Base Clock (MHz)</label>
+                <input name="Base_clock" placeholder="Base Clock (MHz)" id="Base_clock" type="text" />
+            </div>
+            <div class="centerElement">
+                <label for="Boost_clock">Boost Clock (MHz)</label>
+                <input name="Boost_clock" placeholder="Boost Clock (MHz)" id="Boost_clock" type="text" />
+            </div>
+            <div class="centerElement">
+                <label for="Fonderie">Fonderie</label>
+                <input name="Fonderie" placeholder="Fonderie" id="Fonderie" type="text" />
+            </div>
+            <div class="centerElement">
+                <label for="Taille_puce">Taille Puce (mm²)</label>
+                <input name="Taille_puce" placeholder="Taille Puce (mm²)" id="Taille_puce" type="text" />
+            </div>
+            <div class="centerElement">
+                <label for="Date_de_sortie">Date de Sortie</label>
+                <input name="Date_de_sortie" placeholder="Date de Sortie" id="Date_de_sortie" type="text" />
+            </div>
+            <div class="centerElement">
+                <label for="Interface_Bus">Interface Bus</label>
+                <input name="Interface_Bus" placeholder="Interface Bus" id="Interface_Bus" type="text" />
+            </div>
+            <div class="centerElement">
+                <label for="Fréquence_mémoire">Fréquence Mémoire (MHz)</label>
+                <input name="Fréquence_mémoire" placeholder="Fréquence Mémoire (MHz)" id="Fréquence_mémoire" type="text" />
+            </div>
+            <div class="centerElement">
+                <label for="Qte_VRAM">Quantité VRAM (GB)</label>
+                <input name="Qte_VRAM" placeholder="Quantité VRAM (GB)" id="Qte_VRAM" type="text" />
+            </div>
+            <div class="centerElement">
+                <label for="Bande_passante_mem">Bande Passante Mémoire (GB/s)</label>
+                <input name="Bande_passante_mem" placeholder="Bande Passante Mémoire (GB/s)" id="Bande_passante_mem" type="text" />
+            </div>
+            <div class="centerElement">
+                <label for="Type_mem">Type Mémoire</label>
+                <input name="Type_mem" placeholder="Type Mémoire" id="Type_mem" type="text" />
+            </div>
+            <div class="centerElement">
+                <label for="Coeurs">Coeurs</label>
+                <input name="Coeurs" placeholder="Coeurs" id="Coeurs" type="text" />
+            </div>
+            <div class="centerElement">
+                <label for="Coeurs_Tensor">Coeurs Tensor</label>
+                <input name="Coeurs_Tensor" placeholder="Coeurs Tensor" id="Coeurs_Tensor" type="text" />
+            </div>
+            <div class="centerElement">
+                <label for="Coeurs_RT">Coeurs RT</label>
+                <input name="Coeurs_RT" placeholder="Coeurs RT" id="Coeurs_RT" type="text" />
+            </div>
+            <div class="centerElement">
+                <label for="TDP">TDP (W)</label>
+                <input name="TDP" placeholder="TDP (W)" id="TDP" type="text" />
+            </div>
+            <div class="centerElement">
+                <label for="Largeur">Largeur (mm)</label>
+                <input name="Largeur" placeholder="Largeur (mm)" id="Largeur" type="text" />
+            </div>
+            <div class="centerElement">
+                <label for="Longueur">Longueur (mm)</label>
+                <input name="Longueur" placeholder="Longueur (mm)" id="Longueur" type="text" />
+            </div>
+            <div class="centerElement">
+                <label for="Slots">Slots</label>
+                <input name="Slots" placeholder="Slots" id="Slots" type="text" />
+            </div>
+            <div class="centerElement">
+                <label for="Alimentation_recom">Alimentation Recom (W)</label>
+                <input name="Alimentation_recom" placeholder="Alimentation Recom (W)" id="Alimentation_recom" type="text" />
+            </div>
+            <div class="centerElement">
+                <label for="Connecteurs_dalim">Connecteurs d'Alim</label>
+                <input name="Connecteurs_dalim" placeholder="Connecteurs d'Alim" id="Connecteurs_dalim" type="text" />
+            </div>
+            <div class="centerElement">
+                <label for="Connecteurs_daffi">Connecteurs d'Affi</label>
+                <input name="Connecteurs_daffi" placeholder="Connecteurs d'Affi" id="Connecteurs_daffi" type="text" />
+            </div>
+                
+            <div class="centerElement">
+                <button type="submit" id="enregistrer"> Enregistrer </button>
+            </div>
+                
+        </form>
+    
+        <script src="./assets/js/ajax.js"></script>
+        <script src="./assets/js/ajout.js"></script>
+    </body>
 </html>
-
-<script>
-    document.getElementById('form').addEventListener('submit', (event) => {
-        event.preventDefault();
-        console.log(event);
-        formSend(event);
-    })
-
-    function formSend(eventData){
-        let object = {};
-        let isMissing = false;
-
-        for (let idName of eventData.target){
-            console.log(idName.value);
-            if(idName.value === '' && idName.type === 'text'){
-                isMissing = true;
-            }
-
-            if(!idName.value && idName.type === 'text'){
-                isMissing = true;
-            }else{
-                if(idName.type !== 'submit' && idName.name){
-                    object[idName.name] = idName.value;
-                }
-            }
-        }
-
-        console.log(object, isMissing);
-
-        if(isMissing === true){
-            alert("Nope");
-        }else{
-            localStorage.setItem("DataStorage", JSON.stringify(object));
-        }
-    }
-
-    //Vérifie la présence de donnée
-    if(localStorage.getItem("DataStorage")){
-        console.log(JSON.parse(localStorage.getItem("DataStorage")) );
-    }
-
-</script>

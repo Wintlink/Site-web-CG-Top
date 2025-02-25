@@ -1,22 +1,3 @@
-class ajax {
-    constructor(url, options) {
-        this.url = url;
-        this.options = options;
-    }
-    async send(callback) {
-        try {
-            const response = await fetch(this.url, this.options);
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            const data = await response.json();
-            callback(data);
-        } catch (err) {
-            console.error('Fetch failed: ', err);
-        }
-    }
-}
-
 document.addEventListener("DOMContentLoaded", function() {
     const urlParams = new URLSearchParams(window.location.search);
     const model = urlParams.get('model');
@@ -37,6 +18,8 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function displayDetails(details) {
+    if (details?.length) details = details[0];
+    
     const detailsContainer = document.getElementById("details");
     detailsContainer.innerHTML = `
         <h2>${details.Nom_CG}</h2>
@@ -64,3 +47,14 @@ function displayDetails(details) {
         <div class="detail-item"><strong>Photo:</strong> <a href="${details.Photo}" target="_blank">Voir la photo</a></div>
     `;
 }
+
+document.getElementById("techpowerupButton").addEventListener("click", function() {
+    const model = new URLSearchParams(window.location.search).get('model');
+    if (model) {
+        window.open(`https://www.techpowerup.com/gpu-specs/?ajaxsrch=${encodeURIComponent(model)}`, '_blank');
+    }
+});
+
+document.getElementById("backButton").addEventListener("click", function() {
+    window.history.back();
+});

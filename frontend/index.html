@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>Accueil</title>
+    <link rel="stylesheet" href="./assets/css/accueil.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1 class="entete">
+        <div class="titre noto">
+            Cardar
+        </div>
+        <div class="noto petitre">
+            Votre site pour tout savoir sur vos cartes graphiques !
+        </div>
+    </h1>
+    <div id="search-container">
+        <img src="./assets/images/search.svg" id="mg" />
+        <input placeholder="Rechercher" id="search" type="search" />
+    </div>
+    <div class="main-content">
+        <div class="filters">
+            <div>
+                <label for="yearFilter">📅 Filtrer par année de lancement:</label>
+                <select id="yearFilter" class="dropdown">
+                    <option value="all">Toutes</option>
+                    <!-- Generate options for years 2000 to 2025 -->
+                    <script>
+                        for (let year = 2000; year <= 2025; year++) {
+                            document.write(`<option value="${year}">${year}</option>`);
+                        }
+                    </script>
+                </select>
+            </div>
+            <div>
+                <label for="memoryFilter">💾 Filtrer par taille de mémoire:</label>
+                <select id="memoryFilter" class="dropdown">
+                    <option value="all">Toutes</option>
+                    <option value="512">Moins de 512MB</option>
+                    <option value="1024">512MB - 1GB</option>
+                    <option value="2048">1GB - 2GB</option>
+                    <option value="4096">2GB - 4GB</option>
+                    <option value="8192">4GB - 8GB</option>
+                    <option value="16384">8GB - 16GB</option>
+                    <option value="32768">16GB - 32GB</option>
+                    <option value="49152">32GB - 48GB</option>
+                </select>
+            </div>
+            <div>
+                <label for="memoryTypeFilter">🔧 Filtrer par type de mémoire:</label>
+                <select id="memoryTypeFilter" class="dropdown">
+                    <option value="all">Toutes</option>
+                    <option value="gddr">GDDR</option>
+                    <option value="gddr2">GDDR2</option>
+                    <option value="gddr3">GDDR3</option>
+                    <option value="gddr4">GDDR4</option>
+                    <option value="gddr5">GDDR5</option>
+                    <option value="gddr6">GDDR6</option>
+                    <option value="gddr7">GDDR7</option>
+                </select>
+            </div>
+            <div>
+                <label for="constructeurFilter">🏢 Filtrer par fournisseur:</label>
+                <select id="constructeurFilter" class="dropdown">
+                    <option value="all">Tous</option>
+                    <option value="amd">AMD</option>
+                    <option value="nvidia">Nvidia</option>
+                    <option value="intel">Intel</option>
+                    <option value="ati">ATI</option>
+                    <option value="matrox">Matrox</option>
+                </select>
+            </div>
+            <div>
+                <label for="gpuGenerationFilter">🖥️ Filtrer par génération de GPU:</label>
+                <select id="gpuGenerationFilter" class="dropdown">
+                    <option value="all">Toutes</option>
+                    <option value="RTX 50">RTX 50</option>
+                    <option value="RTX 40">RTX 40</option>
+                    <option value="RTX 30">RTX 30</option>
+                    <option value="RTX 20">RTX 20</option>
+                    <option value="GTX 10">GTX 10</option>
+                    <option value="GTX 9">GTX 9</option>
+                    <option value="GTX 7">GTX 7</option>
+                    <option value="GTX 6">GTX 6</option>
+                    <option value="GTX 5">GTX 5</option>
+                    <option value="GTX 4">GTX 4</option>
+                </select>
+            </div>
+        </div>
+        <div>
+            <button id="resetFilters" class="styled-button">🔄 Réinitialiser les filtres</button>
+        </div>
+        <div class="table-container">
+            <table class="tablo">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>GPU</th>
+                        <th>Date de sortie</th>
+                        <th>
+                            <div class="flex">
+                                <span class="fgrow">Cores</span>
+                                <div id="coresAsc">⬆️</div>
+                                <div id="coresDesc">⬇️</div>
+                            </div>
+                        </th>
+                        <th class="hide-mobile">Base Clock</th>
+                        <th class="hide-mobile">Boost Clock</th>
+                        <th class="hide-mobile">VRAM</th>
+                        <th class="hide-mobile">Type_mem</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="logot">
+        <img src="./assets/images/Logocardar.png">
+    </div>
+    
+    <nav class="menu tiletext">
+        <ul class="Navi">
+            <li class="clickedtile">
+                <a>Accueil</a>
+            </li>
+        </ul>
+        <a href="./admin.html"><li class="tile">Ajouter</li></a>
+        
+    </nav>
+
+    <script src="./assets/js/ajax.js"></script>
+    <script src="./assets/js/accueil.js"></script>
+</body>
+</html>

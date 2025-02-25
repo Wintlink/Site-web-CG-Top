@@ -63,7 +63,7 @@
 .entete {
     background-image: 
         linear-gradient(to bottom, transparent, rgb(10, 18, 20) 98%), /* Dégradé semi-transparent */
-        url("bacus.jpeg"); 
+        url("../images/bacus.jpeg"); 
     background-size: cover; 
     height: 500px;
     background-repeat: no-repeat;
@@ -195,30 +195,35 @@ th {
 tr:nth-child(even) {
     background-color: #275c8a;
 }
+#search-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+    margin-top: -90px;
+ /* Adjust margin to place it closer to the top */
+}
 #mg {
     position: absolute;
-    top: 330px;
-    height: 40px;
-    left: 506px;
-    z-index: 100;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10px;
     height: 20px;
+    z-index: 100;
 }
 #search {
-    position: absolute;
-    top: 320px;
+    position: relative;
     height: 40px;
     background-color: #0000005a;
     color: white;
-    padding-left: 5dvh;
+    padding-left: 40px; /* Adjust padding to make space for the icon */
     font-family: "Noto Sans", serif;
     border-radius: 19px;
-    left: 30%;
-    right: 30%;
+    width: 100%;
     box-shadow: 0;
     outline: 0;
     border: 0;
 }
-
 .flexOnlyScreen{
     display: flex;
 }
@@ -287,15 +292,16 @@ select:focus {
     justify-content: space-between;
     padding: 20px;
     align-items: flex-start; /* Align items at the top */
+    flex-wrap: wrap; /* Allow wrapping */
 }
 
 .filters {
-    width: 20%;
     padding: 20px;
+    display: flex;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .table-container {
-    width: 80%; /* Increase the width of the table container */
+    width: 100%; /* Increase the width of the table container */
 }
