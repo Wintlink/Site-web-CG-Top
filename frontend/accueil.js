@@ -35,21 +35,21 @@ document.addEventListener("DOMContentLoaded", function() {
 
     var sort = ["cores", "desc"]; // Default sorting by cores in descending order
 
-    const fields = ["Nom_CG", "GPU", "Date_de_sortie", "Coeurs", "Base_Clock", "Boost_Clock", "VRAM", "Type_mem"];
+    const fields = ["Nom_CG", "GPU", "Date_de_sortie", "Coeurs", "Base_clock", "Boost_clock", "Qte_VRAM", "Type_mem"];
 
     function applyFilters() {
         show_data = data.filter(item => {
             const yearMatch = filters.year === "all" || new Date(item.Date_de_sortie).getFullYear() == filters.year;
-            const memoryMatch = filters.memory === "all" || parseMemorySize(item.VRAM) <= filters.memory;
+            const memoryMatch = filters.memory === "all" || parseMemorySize(item.Qte_VRAM) <= filters.memory;
             const memoryTypeMatch = filters.memoryType === "all" || item.Type_mem.toLowerCase() === filters.memoryType;
             const vendorMatch = filters.vendor === "all" || item.Vendor.toLowerCase() === filters.vendor;
-            const generationMatch = filters.generation === "all" || item.Nom_CG.includes(filters.generation);
+            const generationMatch = filters.generation === "all" || item.Generation.includes(filters.generation);
             const searchMatch = filters.search === "" || item.Nom_CG.toLowerCase().includes(filters.search.toLowerCase()) ||
                 item.GPU.toLowerCase().includes(filters.search.toLowerCase()) ||
                 item.Coeurs.toString().toLowerCase().includes(filters.search.toLowerCase()) ||
-                item.Base_Clock.toString().toLowerCase().includes(filters.search.toLowerCase()) ||
-                item.Boost_Clock.toLowerCase().includes(filters.search.toLowerCase()) ||
-                item.VRAM.toString().toLowerCase().includes(filters.search.toLowerCase()) ||
+                item.Base_clock.toString().toLowerCase().includes(filters.search.toLowerCase()) ||
+                item.Boost_clock.toLowerCase().includes(filters.search.toLowerCase()) ||
+                item.Qte_VRAM.toString().toLowerCase().includes(filters.search.toLowerCase()) ||
                 item.Type_mem.toLowerCase().includes(filters.search.toLowerCase());
             return yearMatch && memoryMatch && memoryTypeMatch && vendorMatch && generationMatch && searchMatch;
         });
@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function() {
             if (sort[0] === "cores" && sort[1] === "desc") return parseInt(a.Coeurs) < parseInt(b.Coeurs) ? 1 : -1;
             return 0;
         }).forEach((rowData) => {
-            content += `<tr onclick="openDetailPage('${rowData.Nom_CG}')">`;
+            content += `<tr onclick="openDetailPage('${rowData.GPU}')">`;
             fields.forEach((field) => {
                 content += "<td>" + rowData[field] + "</td>";
             })
@@ -85,43 +85,59 @@ document.addEventListener("DOMContentLoaded", function() {
                 GPU: item.GPU ?? "",
                 Date_de_sortie: (item.Date_de_sortie ?? "").substring(0, 10),
                 Coeurs: item.Coeurs ?? "",
-                Base_Clock: item.Base_clock ?? "",
-                Boost_Clock: item.Boost_clock ?? "",
-                VRAM: item.Qte_VRAM ?? "",
+                Base_clock: item.Base_clock ?? "",
+                Boost_clock: item.Boost_clock ?? "",
+                Qte_VRAM: item.Qte_VRAM ?? "",
                 Type_mem: item.Type_mem ?? "",
-                Vendor: item.Vendor ?? ""
+                Vendor: item.Vendor ?? "",
+                Generation: item.Generation ?? ""
             });
         });
         show_data = data;
         applyFilters();
     });
 
-    document.getElementById("nameAsc").addEventListener("click", (event) => {
-        sort = ["name", "asc"];
-        generateTableContent();
-    });
+    const nameAsc = document.getElementById("nameAsc");
+    if (nameAsc) {
+        nameAsc.addEventListener("click", (event) => {
+            sort = ["name", "asc"];
+            generateTableContent();
+        });
+    }
 
-    document.getElementById("nameDesc").addEventListener("click", (event) => {
-        sort = ["name", "desc"];
-        generateTableContent();
-    });
+    const nameDesc = document.getElementById("nameDesc");
+    if (nameDesc) {
+        nameDesc.addEventListener("click", (event) => {
+            sort = ["name", "desc"];
+            generateTableContent();
+        });
+    }
 
-    document.getElementById("coresDesc").addEventListener("click", (event) => {
-        sort = ["cores", "desc"];
-        generateTableContent();
-    });
+    const coresDesc = document.getElementById("coresDesc");
+    if (coresDesc) {
+        coresDesc.addEventListener("click", (event) => {
+            sort = ["cores", "desc"];
+            generateTableContent();
+        });
+    }
 
-    document.getElementById("coresAsc").addEventListener("click", (event) => {
-        sort = ["cores", "asc"];
-        generateTableContent();
-    });
+    const coresAsc = document.getElementById("coresAsc");
+    if (coresAsc) {
+        coresAsc.addEventListener("click", (event) => {
+            sort = ["cores", "asc"];
+            generateTableContent();
+        });
+    }
 
-    document.getElementById("search").addEventListener("keyup", (event) => {
-        setTimeout(() => {
-            filters.search = event.target.value;
-            applyFilters();
-        }, 200);
-    });
+    const search = document.getElementById("search");
+    if (search) {
+        search.addEventListener("keyup", (event) => {
+            setTimeout(() => {
+                filters.search = event.target.value;
+                applyFilters();
+            }, 200);
+        });
+    }
 
     function parseMemorySize(size) {
         if (typeof size === 'string') {
@@ -135,46 +151,64 @@ document.addEventListener("DOMContentLoaded", function() {
         return parseFloat(size);
     }
 
-    document.getElementById("yearFilter").addEventListener("change", (event) => {
-        filters.year = event.target.value;
-        applyFilters();
-    });
+    const yearFilter = document.getElementById("yearFilter");
+    if (yearFilter) {
+        yearFilter.addEventListener("change", (event) => {
+            filters.year = event.target.value;
+            applyFilters();
+        });
+    }
 
-    document.getElementById("memoryFilter").addEventListener("change", (event) => {
-        filters.memory = event.target.value;
-        applyFilters();
-    });
+    const memoryFilter = document.getElementById("memoryFilter");
+    if (memoryFilter) {
+        memoryFilter.addEventListener("change", (event) => {
+            filters.memory = event.target.value;
+            applyFilters();
+        });
+    }
 
-    document.getElementById("memoryTypeFilter").addEventListener("change", (event) => {
-        filters.memoryType = event.target.value;
-        applyFilters();
-    });
+    const memoryTypeFilter = document.getElementById("memoryTypeFilter");
+    if (memoryTypeFilter) {
+        memoryTypeFilter.addEventListener("change", (event) => {
+            filters.memoryType = event.target.value;
+            applyFilters();
+        });
+    }
 
-    document.getElementById("vendorFilter").addEventListener("change", (event) => {
-        filters.vendor = event.target.value;
-        applyFilters();
-    });
+    const vendorFilter = document.getElementById("vendorFilter");
+    if (vendorFilter) {
+        vendorFilter.addEventListener("change", (event) => {
+            filters.vendor = event.target.value;
+            applyFilters();
+        });
+    }
 
-    document.getElementById("gpuGenerationFilter").addEventListener("change", (event) => {
-        filters.generation = event.target.value;
-        applyFilters();
-    });
+    const gpuGenerationFilter = document.getElementById("gpuGenerationFilter");
+    if (gpuGenerationFilter) {
+        gpuGenerationFilter.addEventListener("change", (event) => {
+            filters.generation = event.target.value;
+            applyFilters();
+        });
+    }
 
-    document.getElementById("resetFilters").addEventListener("click", () => {
-        filters = {
-            year: "all",
-            memory: "all",
-            memoryType: "all",
-            vendor: "all",
-            generation: "all",
-            search: ""
-        };
-        document.getElementById("yearFilter").value = "all";
-        document.getElementById("memoryFilter").value = "all";
-        document.getElementById("memoryTypeFilter").value = "all";
-        document.getElementById("vendorFilter").value = "all";
-        document.getElementById("gpuGenerationFilter").value = "all";
-        document.getElementById("search").value = "";
-        applyFilters();
-    });
+    const resetFilters = document.getElementById("resetFilters");
+    if (resetFilters) {
+        resetFilters.addEventListener("click", () => {
+            filters = {
+                year: "all",
+                memory: "all",
+                memoryType: "all",
+                vendor: "all",
+                generation: "all",
+                search: ""
+            };
+            document.getElementById("yearFilter").value = "all";
+            document.getElementById("memoryFilter").value = "all";
+            document.getElementById("memoryTypeFilter").value = "all";
+            document.getElementById("vendorFilter").value = "all";
+            document.getElementById("gpuGenerationFilter").value = "all";
+            document.getElementById("search").value = "";
+            applyFilters();
+        });
+    }
 });

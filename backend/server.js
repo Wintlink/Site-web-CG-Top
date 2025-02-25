@@ -45,7 +45,7 @@ app.get('/api/gpus/:model', async (req, res) => {
     try {
         const result = await sql.query`SELECT * FROM dbo.Carte_Graphique WHERE Nom_CG = ${model}`;
         if (!result.recordset.length) res.status(404).send('GPU not found');
-        res.json(result.recordset[0]);
+        res.json(result.recordset);
     } catch (err) {
         console.error('SQL query failed: ', err);
         res.status(500).send('Server error');
