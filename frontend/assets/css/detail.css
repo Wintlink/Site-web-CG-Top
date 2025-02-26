@@ -98,3 +98,29 @@ button:active {
     background-color: rgba(5, 124, 189, 0.8);
     transform: scale(1);
 }
+
+.core-comparison, .tdp-comparison {
+    text-align: center;
+    margin: 20px 0;
+}
+
+#gauge-container, #tdp-gauge-container {
+    width: 100%;
+    max-width: 300px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+#gauge, #tdp-gauge {
+    width: 100%;
+    height: 20px;
+    background-color: #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#gauge > div, #tdp-gauge > div {
+    height: 100%;
+    width: 0;
+    transition: width 0.5s ease-in-out, background-color 0.5s ease-in-out;
+}
